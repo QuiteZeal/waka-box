@@ -32,7 +32,7 @@ async function updateGist(stats) {
 
     const line = [
       name.padEnd(11),
-      time.padEnd(14),
+      time.replace(/hrs?/g, 'h').replace(/mins?/g, 'm').padEnd(9),
       generateBarChart(percent, 21),
       String(percent.toFixed(1)).padStart(5) + "%"
     ];
@@ -49,7 +49,7 @@ async function updateGist(stats) {
       gist_id: gistId,
       files: {
         [filename]: {
-          filename: `📊 Weekly development breakdown`,
+          filename: `⏳ Weekly Coding Time`,
           content: lines.join("\n")
         }
       }
